@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Donut Chart with Arrows</title>
+  <!-- Load the Google Charts library -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    // Load the visualization library and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+      // Create the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Category');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        ['Category 1', 30],
+        ['Category 2', 20],
+        ['Category 3', 15],
+        ['Category 4', 10],
+        ['Category 5', 25]
+      ]);
+
+      // Set chart options
+      var options = {
+        pieHole: 0.4, // Set the size of the inner hole (0.4 = 40%)
+        pieSliceTextStyle: {
+          color: 'white',
+        },
+        legend: 'none', // Hide the legend
+        pieSliceText: 'none', // Hide the percentage labels on slices
+        enableInteractivity: false, // Disable interaction with the chart
+        chartArea: {
+          width: '90%',
+          height: '90%'
+        }
+      };
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.PieChart(document.getElementById('donut_chart'));
+      chart.draw(data, options);
+    }
+  </script>
+  <style>
+    /* Style for the label arrows */
+    .chart-label-arrow {
+      position: relative;
+      display: inline-block;
+    }
+
+    .chart-label-arrow::before {
+      content: "";
+      position: absolute;
+      border-style: solid;
+      border-width: 7px;
+      border-color: #333 transparent transparent transparent;
+      top: 50%;
+      left: 100%;
+      margin-top: -7px;
+      margin-left: 5px;
+    }
+
+    .chart-label-arrow span {
+      display: inline-block;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Display the chart -->
+  <div id="donut_chart" style="width: 400px; height: 400px;"></div>
+
+  <!-- Add labels with arrows -->
+  <div>
+    <div class="chart-label-arrow"><span>Category 1</span></div>
+    <div class="chart-label-arrow"><span>Category 2</span></div>
+    <div class="chart-label-arrow"><span>Category 3</span></div>
+    <div class="chart-label-arrow"><span>Category 4</span></div>
+    <div class="chart-label-arrow"><span>Category 5</span></div>
+  </div>
+</body>
+</html>

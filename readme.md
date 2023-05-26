@@ -1,4 +1,4 @@
-![Alt text](./sample/pie-model-1.png)
+![model-1](./sample/pie-model-1.png)
 
 
 ![Alt text](./sample/pie-model-2.png)
